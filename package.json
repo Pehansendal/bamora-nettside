@@ -1,0 +1,10 @@
+{
+  "name": "bamora-nettside",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Statisk Bamora-nettside klar for Cloudflare Pages.",
+  "scripts": {
+    "preview": "python -m http.server 4173",
+    "deploy:cloudflare": "npx wrangler@latest pages deploy . --project-name=bamora --branch=main"
+  }
+}
