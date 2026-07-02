@@ -10,15 +10,21 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="sock-3d.js" type="module"></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Bamora hjem">
-      <svg viewBox="0 0 40 42" aria-hidden="true">
-        <path d="M20 39V15M20 25c-8-1-12-6-12-13 8 1 12 5 12 13ZM20 17C21 9 25 5 32 3c1 8-4 13-12 14Z"/>
-        <path d="M20 33c7-1 11-5 12-11-7 0-11 4-12 11Z"/>
-      </svg>
+      <img class="brand-mark" src="assets/brand/logo-liten-hvit.png" alt="" aria-hidden="true">
       <span>BAMORA</span>
     </a>
 
@@ -104,6 +110,28 @@
         <strong>Se hvordan sokkene lages</strong>
         <i>↗</i>
       </a>
+    </section>
+
+    <section class="digital-sock" id="digital-sokk">
+      <div class="digital-sock-copy">
+        <p class="eyebrow">Premium bambussokker</p>
+        <h2>Mykere komfort.<br><em>Penere salg.</em></h2>
+        <p>Høykvalitets bambussokker med et rent uttrykk, behagelig passform og en følelse som gjør dem enkle å anbefale. Et produkt folk faktisk bruker, pakket med Bamoras premium preg.</p>
+        <div class="digital-sock-facts" aria-label="Fordeler med Bamora-sokker">
+          <span><strong>01</strong><small>Silkemyk komfort</small></span>
+          <span><strong>B</strong><small>Signaturdetalj</small></span>
+          <span><strong>03</strong><small>Lett å selge</small></span>
+        </div>
+      </div>
+
+      <div class="sock-stage" data-sock-viewer aria-label="Interaktiv 3D-modell av Bamora-sokk med logo">
+        <canvas class="sock-canvas"></canvas>
+        <div class="sock-loader" aria-hidden="true">
+          <span></span>
+          <p>3D-modell</p>
+        </div>
+        <span class="sock-stage-label" aria-hidden="true">BAMORA · PREMIUM BAMBOO ESSENTIALS</span>
+      </div>
     </section>
 
     <section class="collection" id="produkter">
@@ -199,7 +227,7 @@
 
   <footer>
     <a class="brand footer-brand" href="#top">
-      <svg viewBox="0 0 40 42" aria-hidden="true"><path d="M20 39V15M20 25c-8-1-12-6-12-13 8 1 12 5 12 13ZM20 17C21 9 25 5 32 3c1 8-4 13-12 14Z"/><path d="M20 33c7-1 11-5 12-11-7 0-11 4-12 11Z"/></svg>
+      <img class="brand-mark" src="assets/brand/logo-liten-hvit.png" alt="" aria-hidden="true">
       <span>BAMORA</span>
     </a>
     <p>Premium bambus essentials.</p>

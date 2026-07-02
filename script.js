@@ -33,7 +33,7 @@ if (form && toast) {
 }
 
 const revealTargets = document.querySelectorAll(
-  ".benefit-row article, .product-card, .steps li, .audience-grid article, .section-heading, .statement-copy, .process-intro > *, .process-step .step-visual, .process-step .step-copy, .summary-grid article"
+  ".benefit-row article, .product-card, .steps li, .audience-grid article, .section-heading, .statement-copy, .digital-sock-copy > *, .sock-stage, .process-intro > *, .process-step .step-visual, .process-step .step-copy, .summary-grid article"
 );
 
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {

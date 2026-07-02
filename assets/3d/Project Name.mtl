@@ -1,0 +1,8 @@
+newmtl medias
+Kd 1.000 1.000 1.000
+d 1.000
+map_Kd Left.png
+newmtl medias.001
+Kd 1.000 1.000 1.000
+d 1.000
+map_Kd right2.png
