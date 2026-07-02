@@ -32,6 +32,32 @@ if (form && toast) {
   });
 }
 
+const calculator = document.querySelector("[data-profit-calculator]");
+
+if (calculator) {
+  const sellersInput = calculator.querySelector("[data-sellers]");
+  const packsInput = calculator.querySelector("[data-packs]");
+  const totalOutput = calculator.querySelector("[data-profit-total]");
+  const detailOutput = calculator.querySelector("[data-profit-detail]");
+  const profitPerPack = 250;
+
+  const formatKr = (value) => `${new Intl.NumberFormat("nb-NO").format(value)} kr`;
+
+  const updateCalculator = () => {
+    const sellers = Math.max(0, Number.parseInt(sellersInput.value, 10) || 0);
+    const packs = Math.max(0, Number.parseInt(packsInput.value, 10) || 0);
+    const totalPacks = sellers * packs;
+    const profit = totalPacks * profitPerPack;
+
+    totalOutput.textContent = formatKr(profit);
+    detailOutput.textContent = `${new Intl.NumberFormat("nb-NO").format(totalPacks)} pakker solgt totalt`;
+  };
+
+  sellersInput.addEventListener("input", updateCalculator);
+  packsInput.addEventListener("input", updateCalculator);
+  updateCalculator();
+}
+
 const revealTargets = document.querySelectorAll(
   ".benefit-row article, .product-card, .steps li, .audience-grid article, .section-heading, .statement-copy, .digital-sock-copy > *, .sock-stage, .process-intro > *, .process-step .step-visual, .process-step .step-copy, .summary-grid article"
 );

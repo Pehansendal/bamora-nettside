@@ -278,49 +278,140 @@ h2 { font-size: clamp(48px, 6.2vw, 90px); }
   overflow: hidden;
 }
 .digital-sock-copy {
-  padding: 118px clamp(32px, 6vw, 104px);
+  padding: 86px clamp(32px, 5vw, 84px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-right: 1px solid rgba(255,255,255,.09);
 }
-.digital-sock-copy h2 { font-size: clamp(48px, 5.4vw, 82px); }
+.digital-sock-copy h2 { font-size: clamp(46px, 5vw, 76px); }
 .digital-sock-copy > p:not(.eyebrow) {
   max-width: 500px;
-  margin: 34px 0 0;
+  margin: 28px 0 0;
   color: #aba99f;
   font-size: 14px;
   line-height: 1.85;
 }
-.digital-sock-facts {
+.profit-strip {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1px;
-  margin-top: 56px;
+  margin-top: 36px;
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(255,255,255,.12);
 }
-.digital-sock-facts span {
+.profit-strip span {
   min-width: 0;
-  padding: 22px 18px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   background: #10120f;
 }
-.digital-sock-facts strong {
+.profit-strip strong {
   color: var(--gold-light);
   font-family: "Playfair Display";
-  font-size: 28px;
+  font-size: 25px;
   font-weight: 500;
   line-height: 1;
 }
-.digital-sock-facts small {
+.profit-strip small,
+.calculator-heading span,
+.calculator-result small,
+.jacob-story span {
   color: #77796f;
   text-transform: uppercase;
   letter-spacing: .12em;
   font-size: 8px;
   line-height: 1.5;
+}
+.profit-calculator {
+  margin-top: 22px;
+  padding: 24px;
+  border: 1px solid rgba(214,186,136,.24);
+  background: rgba(255,255,255,.045);
+}
+.calculator-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+.calculator-heading strong {
+  font-family: "Playfair Display";
+  font-size: 21px;
+  font-weight: 500;
+}
+.profit-calculator label {
+  display: grid;
+  grid-template-columns: 1fr 86px;
+  align-items: center;
+  gap: 20px;
+  padding: 13px 0;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.profit-calculator label span {
+  margin: 0;
+  color: #aaa79d;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.profit-calculator input {
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(12,13,12,.5);
+  color: #f5f1e8;
+  padding: 0 12px;
+  text-align: right;
+}
+.calculator-result {
+  margin-top: 18px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(214,186,136,.24);
+  display: grid;
+  gap: 8px;
+}
+.calculator-result strong {
+  color: var(--gold-light);
+  font-family: "Playfair Display";
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 500;
+  line-height: .95;
+}
+.calculator-result span {
+  color: #96938a;
+  font-size: 12px;
+}
+.jacob-story {
+  min-height: 124px;
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.13);
+  background: rgba(12,13,12,.38);
+}
+.jacob-story img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.jacob-story div {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.jacob-story strong {
+  max-width: 340px;
+  color: #f5f1e8;
+  font-family: "Playfair Display";
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.22;
 }
 .sock-stage {
   position: relative;
@@ -514,8 +605,15 @@ footer > div a:last-child { margin-left: auto; }
   .editorial-link strong { font-size: 20px; }
   .digital-sock-copy { padding: 82px 24px 58px; }
   .digital-sock-copy > p:not(.eyebrow) { font-size: 13px; }
-  .digital-sock-facts { margin-top: 38px; grid-template-columns: 1fr; }
-  .digital-sock-facts span { padding: 18px; }
+  .profit-strip { margin-top: 34px; grid-template-columns: 1fr; }
+  .profit-strip span { padding: 18px; }
+  .profit-calculator { padding: 20px; }
+  .profit-calculator label { grid-template-columns: 1fr 74px; gap: 14px; }
+  .calculator-heading { display: grid; gap: 8px; }
+  .calculator-result strong { font-size: 38px; }
+  .jacob-story { grid-template-columns: 96px 1fr; min-height: 116px; }
+  .jacob-story div { padding: 16px; }
+  .jacob-story strong { font-size: 17px; }
   .sock-stage { min-height: 480px; }
   .sock-stage-label { max-width: 190px; line-height: 1.7; }
   .section-heading { display: block; }
