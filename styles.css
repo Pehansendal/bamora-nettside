@@ -379,6 +379,11 @@ h2 { font-size: clamp(48px, 6.2vw, 90px); }
   font-size: clamp(36px, 4vw, 56px);
   font-weight: 500;
   line-height: .95;
+  transition: color .25s ease, text-shadow .25s ease;
+}
+.profit-calculator.is-counting .calculator-result strong {
+  color: #f0d7a6;
+  text-shadow: 0 0 26px rgba(214, 186, 136, .34);
 }
 .calculator-result span {
   color: #96938a;

@@ -33,6 +33,7 @@ if (form && toast) {
 }
 
 const calculator = document.querySelector("[data-profit-calculator]");
+let updateProfitOnScroll = () => {};
 
 if (calculator) {
   const sellersInput = calculator.querySelector("[data-sellers]");
@@ -40,17 +41,50 @@ if (calculator) {
   const totalOutput = calculator.querySelector("[data-profit-total]");
   const detailOutput = calculator.querySelector("[data-profit-detail]");
   const profitPerPack = 250;
+  const numberFormatter = new Intl.NumberFormat("nb-NO");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let targetProfit = 0;
+  let targetPacks = 0;
 
-  const formatKr = (value) => `${new Intl.NumberFormat("nb-NO").format(value)} kr`;
+  const formatKr = (value) => `${numberFormatter.format(value)} kr`;
 
-  const updateCalculator = () => {
+  const getCalculatorValues = () => {
     const sellers = Math.max(0, Number.parseInt(sellersInput.value, 10) || 0);
     const packs = Math.max(0, Number.parseInt(packsInput.value, 10) || 0);
     const totalPacks = sellers * packs;
-    const profit = totalPacks * profitPerPack;
 
-    totalOutput.textContent = formatKr(profit);
-    detailOutput.textContent = `${new Intl.NumberFormat("nb-NO").format(totalPacks)} pakker solgt totalt`;
+    return {
+      totalPacks,
+      profit: totalPacks * profitPerPack
+    };
+  };
+
+  const renderCalculator = (profit, totalPacks) => {
+    totalOutput.textContent = formatKr(Math.round(profit));
+    detailOutput.textContent = `${numberFormatter.format(totalPacks)} pakker solgt totalt`;
+  };
+
+  updateProfitOnScroll = () => {
+    if (reduceMotion) {
+      renderCalculator(targetProfit, targetPacks);
+      return;
+    }
+
+    const rect = calculator.getBoundingClientRect();
+    const start = window.innerHeight * .9;
+    const end = window.innerHeight * .32;
+    const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+
+    renderCalculator(targetProfit * eased, targetPacks);
+    calculator.classList.toggle("is-counting", progress > 0 && progress < 1);
+  };
+
+  const updateCalculator = () => {
+    const values = getCalculatorValues();
+    targetProfit = values.profit;
+    targetPacks = values.totalPacks;
+    updateProfitOnScroll();
   };
 
   sellersInput.addEventListener("input", updateCalculator);
@@ -120,6 +154,8 @@ const updateScrollEffects = () => {
       salesImage.style.setProperty("--image-shift", `${-10 + visibleProgress * 10}%`);
     }
   }
+
+  updateProfitOnScroll();
 };
 
 window.addEventListener("scroll", updateScrollEffects, { passive: true });
