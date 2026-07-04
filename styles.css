@@ -547,6 +547,7 @@ input::placeholder { color: #64645f; }
 select option { color: #111; }
 form .button { width: 100%; margin-top: 9px; }
 .form-note { color: #62625e; font-size: 10px; text-align: center; margin: -8px 0 0; }
+.form-note a { color: var(--gold-light); white-space: nowrap; }
 
 footer { background: #0b0c0b; color: #92928d; padding: 55px clamp(24px, 5vw, 76px) 35px; display: grid; grid-template-columns: 1fr auto; align-items: center; }
 .footer-brand { color: #eee9df; grid-row: 1; }

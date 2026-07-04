@@ -44,7 +44,7 @@
   inset: 0;
   background: linear-gradient(90deg, rgba(12,13,12,.22), transparent 35%), linear-gradient(0deg, rgba(12,13,12,.22), transparent 35%);
 }
-.process-hero-image img { height: 100%; object-fit: cover; transform: scale(1.03); }
+.process-hero-image img { height: 100%; object-fit: cover; object-position: 42% center; transform: scale(1.03); }
 .material-stamp {
   position: absolute;
   z-index: 2;
