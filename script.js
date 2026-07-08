@@ -92,6 +92,59 @@ if (calculator) {
   updateCalculator();
 }
 
+const sockVideo = document.querySelector(".sock-video");
+let updateSockVideoOnScroll = () => {};
+
+if (sockVideo) {
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let targetVideoTime = 0;
+  let videoTicker;
+  sockVideo.pause();
+
+  sockVideo.addEventListener("error", () => {
+    sockVideo.hidden = true;
+  });
+
+  const easeVideoTowardTarget = () => {
+    if (reduceMotion || sockVideo.hidden || !Number.isFinite(sockVideo.duration) || sockVideo.duration <= 0) {
+      videoTicker = undefined;
+      return;
+    }
+
+    const nextTime = sockVideo.currentTime + (targetVideoTime - sockVideo.currentTime) * .16;
+
+    if (Math.abs(sockVideo.currentTime - nextTime) > .01) {
+      sockVideo.currentTime = nextTime;
+    }
+
+    if (Math.abs(sockVideo.currentTime - targetVideoTime) > .025) {
+      videoTicker = window.requestAnimationFrame(easeVideoTowardTarget);
+    } else {
+      sockVideo.currentTime = targetVideoTime;
+      videoTicker = undefined;
+    }
+  };
+
+  updateSockVideoOnScroll = () => {
+    if (reduceMotion || sockVideo.hidden || !Number.isFinite(sockVideo.duration) || sockVideo.duration <= 0) return;
+
+    const stage = sockVideo.closest(".sock-stage");
+    if (!stage) return;
+
+    const rect = stage.getBoundingClientRect();
+    const start = window.innerHeight * .92;
+    const end = -rect.height * .55;
+    const progress = Math.min(Math.max((start - rect.top) / (start - end), 0), 1);
+    targetVideoTime = progress * sockVideo.duration;
+
+    if (!videoTicker) {
+      videoTicker = window.requestAnimationFrame(easeVideoTowardTarget);
+    }
+  };
+
+  sockVideo.addEventListener("loadedmetadata", updateSockVideoOnScroll);
+}
+
 const revealTargets = document.querySelectorAll(
   ".benefit-row article, .product-card, .steps li, .audience-grid article, .section-heading, .statement-copy, .digital-sock-copy > *, .sock-stage, .process-intro > *, .process-step .step-visual, .process-step .step-copy, .summary-grid article"
 );
@@ -156,6 +209,7 @@ const updateScrollEffects = () => {
   }
 
   updateProfitOnScroll();
+  updateSockVideoOnScroll();
 };
 
 window.addEventListener("scroll", updateScrollEffects, { passive: true });

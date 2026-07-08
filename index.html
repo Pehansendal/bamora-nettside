@@ -10,15 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
-      }
-    }
-  </script>
-  <script src="sock-3d.js" type="module"></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -153,12 +144,10 @@
         </div>
       </div>
 
-      <div class="sock-stage" data-sock-viewer aria-label="Interaktiv 3D-modell av Bamora-sokk med logo">
-        <canvas class="sock-canvas"></canvas>
-        <div class="sock-loader" aria-hidden="true">
-          <span></span>
-          <p>3D-modell</p>
-        </div>
+      <div class="sock-stage" aria-label="Video av Bamora-sokker med logo">
+        <video class="sock-video" muted playsinline preload="auto" aria-hidden="true">
+          <source src="assets/images/sokkvideo-scrub.mp4" type="video/mp4">
+        </video>
         <span class="sock-stage-label" aria-hidden="true">BAMORA · PREMIUM BAMBOO ESSENTIALS</span>
       </div>
     </section>
